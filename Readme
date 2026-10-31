@@ -26,7 +26,7 @@ Este projeto foi desenvolvido como requisito académico pela *Equipe 13* do curs
 4.  🪄 Harry Potter
 5.  ⚔️ Demon Slayer
 6.  🩺 Grey's Anatomy
-
+...
 ---
 
 ## 💻 Tecnologias e Padrões Utilizados
@@ -50,5 +50,5 @@ O projeto foi construído utilizando as bases do desenvolvimento Web Standards (
  ┃ ┣ 📜 app.js          # Lógica principal, manipulação de DOM e rotas virtuais
  ┃ ┗ 📜 data.js         # Banco de dados estático (Perguntas, Alternativas e Respostas)
  ┣ 📜 index.html        # Estrutura principal da página (Single Page Application)
- ┣ 📜 db.json           # Representação JSON da estrutura de dados da aplicação
+ ┣ 📜 db.json           # Representação JSON da estrutura de dados da a---plicação
  ┗ 📜 README.md         # Documentação do projeto
