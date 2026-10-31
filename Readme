@@ -1,0 +1,54 @@
+# 🎬 Cinem@Fã - Quiz de Filmes e Séries
+
+O *Cinem@Fã* é uma aplicação web interativa de perguntas e respostas focada no entretenimento de fãs de series, cinema e televisão. O sistema permite aos utilizadores testarem os seus conhecimentos em diversas franquias famosas, acumularem pontos e competirem num ranking geral.
+
+Este projeto foi desenvolvido como requisito académico pela *Equipe 13* do curso de *TADS 2026 - Centro Universitário SENAC*.
+
+---
+
+## 🚀 Funcionalidades
+
+*   *Autenticação de Utilizadores:* Sistema de registo e login utilizando E-mail e Palavra-passe.
+*   *Persistência de Dados Local:* Utilização da API localStorage do navegador para guardar perfis de utilizadores, histórico de quizzes concluídos e pontuações, sem necessidade de uma base de dados externa.
+*   *Dinâmica de Quizzes:* 
+    *   6 categorias de entretenimento disponíveis.
+    *   Sorteio dinâmico de 10 perguntas aleatórias a partir de um banco de 30 questões por tema (garantindo que cada jogada seja única).
+    *   Bloqueio de repetição: cada utilizador só pode responder a cada tema uma única vez.
+*   *Feedback Visual e Imediato:* Barra de progresso interativa, validação de respostas em tempo real (correto/incorreto) e transições suaves de interface (fade-in).
+*   *Gamificação:* Tabela de Classificação (Ranking Top 5) atualizada automaticamente com base na pontuação total dos utilizadores.
+*   *Conformidade Legal:* Aviso de conformidade com a LGPD (Lei Geral de Proteção de Dados - Lei 13.709/18).
+
+## 📚 Categorias Disponíveis
+
+1.  🌊 Percy Jackson
+2.  🟢 Chaves
+3.  🎠 Carrossel
+4.  🪄 Harry Potter
+5.  ⚔️ Demon Slayer
+6.  🩺 Grey's Anatomy
+
+---
+
+## 💻 Tecnologias e Padrões Utilizados
+
+O projeto foi construído utilizando as bases do desenvolvimento Web Standards (Front-end):
+
+*   *HTML5:* Semântica e estruturação lógica de componentes.
+*   *CSS3:* Estilização responsiva (Mobile-First), utilização de CSS Variables (:root), Flexbox e CSS Grid Layout.
+*   *JavaScript (Vanilla JS):* Manipulação de DOM, gestão de estado da aplicação, arrays/objetos, e persistência com localStorage.
+*   *Design:* Interface baseada em "Cards" (Modo Escuro / Dark Theme) e tipografia moderna (Google Fonts: Poppins).
+
+---
+
+## 🛠️ Estrutura do Projeto
+
+```text
+📦 cinemafa
+ ┣ 📂 css
+ ┃ ┗ 📜 style.css       # Estilos globais e responsividade da aplicação
+ ┣ 📂 js
+ ┃ ┣ 📜 app.js          # Lógica principal, manipulação de DOM e rotas virtuais
+ ┃ ┗ 📜 data.js         # Banco de dados estático (Perguntas, Alternativas e Respostas)
+ ┣ 📜 index.html        # Estrutura principal da página (Single Page Application)
+ ┣ 📜 db.json           # Representação JSON da estrutura de dados da aplicação
+ ┗ 📜 README.md         # Documentação do projeto
