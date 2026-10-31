@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinem@Fã - Quiz de Filmes e Séries</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header>
+    <div class="logo">Cinem<span>@</span>Fã 🎬</div>
+    <div class="user-info" id="userInfoHeader" style="display: none;">
+      <span id="userNameDisplay"></span>
+      <span class="user-badge" id="userScoreDisplay">0 pts</span>
+      <button class="btn btn-outline" id="btnLogoutHeader">Sair</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- TELA 1: LOGIN / CADASTRO / RANKING -->
+    <section id="screenAuth" class="card fade-in">
+      <div class="auth-grid">
+        <!-- Formulários de Login e Cadastro -->
+        <div>
+          <div class="tab-buttons">
+            <button class="tab-btn active" id="tabLoginBtn">Entrar</button>
+            <button class="tab-btn" id="tabRegisterBtn">Cadastrar</button>
+          </div>
+
+          <!-- Form Login -->
+          <form id="loginForm" class="auth-form">
+            <h2>Acessar Conta</h2>
+            <div class="form-group">
+              <label for="loginName">Nome Completo</label>
+              <input type="text" id="loginName" placeholder="Ex: Lucas Mendes" required>
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Senha</label>
+              <input type="password" id="loginPassword" placeholder="Sua senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Entrar no Cinem@Fã</button>
+            
+            <div class="test-accounts">
+              <strong>Contas de Teste Pré-definidas:</strong>
+              <ul>
+                <li><span>Lucas Mendes</span> | Senha: <code>teste123</code></li>
+                <li><span>Mariana Silva</span> | Senha: <code>teste123</code></li>
+              </ul>
+            </div>
+          </form>
+
+          <!-- Form Cadastro -->
+          <form id="registerForm" class="auth-form hidden">
+            <h2>Criar Nova Conta</h2>
+            <div class="form-group">
+              <label for="regName">Nome Completo</label>
+              <input type="text" id="regName" placeholder="Seu nome completo" required>
+            </div>
+            <div class="form-group">
+              <label for="regEmail">E-mail</label>
+              <small style="color:var(--text-muted); display:block; margin-bottom:4px;">Utilizado para recuperação de senha e premiação</small>
+              <input type="email" id="regEmail" placeholder="seuemail@exemplo.com" required>
+            </div>
+            <div class="form-group">
+              <label for="regPassword">Senha</label>
+              <input type="password" id="regPassword" placeholder="Crie uma senha" required>
+            </div>
+            <button type="submit" class="btn btn-success" style="width:100%;">Cadastrar e Entrar</button>
+          </form>
+        </div>
+
+        <!-- Tabela de Ranking -->
+        <div>
+          <h2>🏆 Top 5 Ranking Geral</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">
+            A pontuação é somada conforme você joga cada quiz (máximo 1 vez por tema).
+          </p>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Posição</th>
+                  <th>Usuário</th>
+                  <th style="text-align: right;">Pontos</th>
+                </tr>
+              </thead>
+              <tbody id="rankingTableBody">
+                <!-- Preenchido via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção de Patrocinadores -->
+      <div class="sponsors-section">
+        <h3>Nossos Patrocinadores</h3>
+        <div class="sponsors-grid">
+          <!-- Patrocinador 1 -->
+          <div class="sponsor-card">
+            <h4>🛍️ Loja Do Fã</h4>
+            <p>Produtos nerds, colecionáveis, vestuário e acessórios dos seus filmes e séries favoritos!</p>
+            <div class="sponsor-links">
+              <a href="https://example.com/lojadofa" target="_blank" rel="noopener">🌐 Visitar Site</a>
+              <a href="https://instagram.com/lojadofa" target="_blank" rel="noopener">📱 Instagram</a>
+            </div>
+          </div>
+          <!-- Patrocinador 2 -->
+          <div class="sponsor-card">
+            <h4>🍿 Cinema Show</h4>
+            <p>O portal completo com ingressos, lançamentos, combos e notícias do cinema mundial!</p>
+            <div class="sponsor-links">
+              <a href="https://example.com/cinemashow" target="_blank" rel="noopener">🌐 Visitar Site</a>
+              <a href="https://instagram.com/cinemashow" target="_blank" rel="noopener">📱 Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TELA 2: ESCOLHA DE FILMES / SÉRIES -->
+    <section id="screenCategory" class="card fade-in hidden">
+      <div style="text-align:center; margin-bottom: 24px;">
+        <h2>Escolha um Quiz para Jogar</h2>
+        <p style="color: var(--text-muted);">
+          Cada quiz possui 10 perguntas sorteadas de um banco de 30 questões. Você pode responder cada quiz apenas uma vez!
+        </p>
+      </div>
+
+      <div class="quiz-grid" id="categoryGrid">
+        <!-- Cards gerados via JS -->
+      </div>
+    </section>
+
+    <!-- TELA 3: EXECUÇÃO DO QUIZ -->
+    <section id="screenQuiz" class="card fade-in hidden">
+      <div class="quiz-header">
+        <div id="quizCategoryTitle" class="quiz-title">Nome do Tema</div>
+        <div id="quizProgressText" style="font-weight: 600; color: var(--primary);">Pergunta 1 de 10</div>
+      </div>
+
+      <div class="progress-bar-bg">
+        <div id="progressBarFill" class="progress-bar-fill" style="width: 10%;"></div>
+      </div>
+
+      <div id="questionContainer">
+        <h3 id="questionText" class="question-title">Pergunta aqui?</h3>
+        <div id="optionsList" class="options-grid"></div>
+        <div id="feedbackBox" class="feedback-box hidden"></div>
+      </div>
+    </section>
+
+    <!-- TELA 4: RESULTADO DO QUIZ -->
+    <section id="screenResult" class="card fade-in hidden text-center">
+      <h2>🎉 Quiz Concluído!</h2>
+      <p style="font-size: 1.1rem; margin-top: 8px;">Confira seu desempenho em <strong id="resultCategoryName">---</strong>:</p>
+
+      <div class="score-badge" id="resultScore">0 / 10</div>
+      <p id="resultMessage" style="font-size: 1.1rem; font-weight: 600; margin-bottom: 24px; color: var(--text-muted);"></p>
+
+      <div class="result-actions">
+        <button id="btnChooseAnotherQuiz" class="btn btn-primary">🍿 Escolher Outro Filme/Série</button>
+        <button id="btnLogoutResult" class="btn btn-outline">🚪 Sair (Ir para Tela Inicial)</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p><strong>Desenvolvido pela Equipe 13 - TADS 2026 - Centro Universitário SENAC.</strong></p>
+    <p>Esse site está em conformidade com a <strong>LGPD - Lei 13.709/18</strong>.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
